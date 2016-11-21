@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Starter HTML5 document with material desing features</title>
+<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/ripples.min.css" />
+<link rel="stylesheet" href="css/bootstrap-material-design.css" />
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="js/ripples.min.js"></script>
+<script src="js/customJquery.js"></script>
+<script src="js/functions.js"></script>
+<script src="js/start.js"></script>
+<script src="js/nodes.js"></script>
+</head>
+<body>
+
+  <canvas id="nodesBg"></canvas>
+  <script src="js/nodes.js"></script>
+
+
+<section id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-sm-12 col-lg-8">
+
+            <h1>Hassely</h1>
+            <h2 class="text-white">Generador de Hasses, como jugando.</h2>
+            <a href="#" id="btnStart"
+             class="btn ripple-wave d1 default-primary-color"><i class="ion-log-in"></i> Empezar</a>
+
+             <a href="#" data-toggle="modal" data-target="#complete-dialog"
+              class="btn ripple-wave d1 light-primary-color"><i class="ion-help-circled"></i> Ayuda</a>
+
+
+
+      </div>
+
+    </div>
+  </div>
+
+
+</section>
+
+<!-- Section First Step -->
+<section id="step1" style="display:none" >
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="box d2">
+          <div class="box-content">
+          <h2>1. Ingresa número</h2>
+          <p>¡Hola!. En primer lugar, indica el valor de N (número natural).
+            De este número se obtendrán sus divisores.
+          </p>
+
+            <div class="form-group">
+              <label for="inputNumeroN">Valor de N</label>
+              <input  onkeypress="return isNumeric(event)"  oninput="maxLengthCheck(this)" type="number"  maxlength="5"  min="1"   max="99999" class="form-control"
+              id="inputNumeroN" placeholder="Ejemplo: 40, 80, 120">
+            </div>
+            <!--<div class="checkbox">
+              <label>
+                <input type="checkbox"> ¿Prefieres un número aleatorio?
+              </label>
+            </div>-->
+            <!--<button id="btnSendN" type="submit" class="btn ripple-wave d1 default-primary-color">
+              Siguiente </button>-->
+            <button disabled  id="btnSendN" class="btn ripple-wave d1 default-primary-color">
+              <i class="ion-arrow-right-c"></i>  Siguiente </button>
+
+
+
+           </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+</section>
+
+<!-- Section Second Step -->
+<section id="step2" style="display:none"  >
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="box d2">
+          <div class="box-content">
+          <h2>2. Divisores y Conjuntos</h2>
+          <p>¡Ta-da! A partir del número brindado se generó un conjunto D. Adicionalmente,
+            la relación R en un subconjunto de D.
+
+          </p>
+
+          <h3>Divisores</h3>
+          <p>Los divisores de <b> <span id="loadnumN"></span> </b>:</p>
+          <p id="loadDivisores"></p>
+
+          <h3>Relación</h3>
+         La relación de orden parcial <b>𝑥𝑅𝑦 ⇔ 𝑥 𝑒𝑠 𝑚ú𝑙𝑡𝑖𝑝𝑙𝑜 𝑑𝑒 𝑦.</b> <br>
+
+         <a href="#" data-toggle="modal" data-target="#relacion-dialog"
+          class="btn ripple-wave d1 light-primary-color">Mostrar R </a>
+
+          <p>
+          Clica en Siguiente para mostrar el diagrama <a href="#">Hasse</a> de la relación R.
+          </p>
+
+
+          <a id="btnShowHasse" href="#" class="btn ripple-wave d1 default-primary-color">
+            <i class="ion-arrow-right-c"></i> Siguiente </a>
+
+           </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+</section>
+
+
+<!-- Section Third Step -->
+<section id="step3" style="display:none"  >
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="box d2">
+          <div class="box-content">
+          <h2>3. Hasse</h2>
+
+
+          <canvas id="loadHasse" width="300" height="300"></canvas>
+
+
+          <a id="colorRandom" class="btn ripple-wave d1 light-primary-color">
+            <i class="ion-waterdrop"></i> Arcoiris </a>
+            <a id="colorRandom" class="btn ripple-wave d1 light-primary-color">
+              <i class="ion-android-share-alt"></i> Compartir</a>
+
+          <a href="index.html" class="btn ripple-wave d1 default-primary-color">
+            <i class="ion-refresh"></i> Reiniciar </a>
+
+           </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+</section>
+
+
+
+<!-- Dialogs -->
+<section id="dialogs">
+  <div id="complete-dialog" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close btn-large" data-dismiss="modal"
+          aria-hidden="true" >&times;</button>
+          <h3 class="modal-title"><i class="ion-help-circled"></i> AYUDA</h3>
+        </div>
+        <div class="modal-body">
+          <p>El presente programa permite al usuario generar conjuntos,
+            relación R y diagrama de Hasse de la misma. A partir de ingresar un número N.
+            Estre trabajo pertence al curso de Matemática Discreta (2016-2), sede UPC San Isidro. :)
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">
+            ENTENDIDO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div id="relacion-dialog" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close btn-large" data-dismiss="modal"
+          aria-hidden="true" >&times;</button>
+          <h3 class="modal-title">Relacion R en conjunto</h3>
+        </div>
+        <div class="modal-body">
+        <p id="loadRelacion"></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+      <div class="container">
+        <p class="text-muted">Copyright © 2016 Hassely</p>
+
+        <!--<ul>
+          <li>Inicio</li>
+          <li>Recientes</li>
+          <li>Acerca de</li>
+          <li>Contacto</li>
+          <li>No entrar</li>
+        </ul>-->
+      </div>
+</footer>
+
+
+</body>
+</html>
