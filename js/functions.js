@@ -44,7 +44,7 @@ function maxLengthCheck(object) {
     if (object.value.length > object.maxLength){
       object.value = object.value.slice(0, object.maxLength)
 
-      
+
   }
 
 
@@ -289,7 +289,7 @@ function Hasse2D()
                         a = this.matriz[i][j].a.valor;
                         b = this.matriz[i][j].b.valor;
 
-                        notacion += "(" + a + "," + b + ")";
+                        notacion += "(" + b + "," + a + ")";
 
                         //if(i  < this.dominio.length-1)
                         notacion += " ; ";
